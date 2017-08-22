@@ -17,6 +17,14 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <span v-bind:title="message" >{{ haha }}</span>
+    <p v-if="seen">you see me</p>
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+    <button v-on:click="handleClick">on click</button>
   </div>
 </template>
 
@@ -25,8 +33,22 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      haha : 'Hello syl',
+      message : '页面加载于 ' + new Date().toLocaleString(),
+      seen: true,
+      todos: [
+        { text: '学习 JavaScript' },
+        { text: '学习 Vue' },
+        { text: '整个牛项目' }
+      ]
     }
+  },
+  methods: {
+      handleClick: function() {
+          console.log('hahaha')
+          this.haha = this.haha.split('').reverse().join('')
+      }
   }
 }
 </script>
